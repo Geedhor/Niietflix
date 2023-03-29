@@ -1,6 +1,10 @@
 # Nietflix
 
-! [Logo] (https://github.com/Geedhor/Niietflix/blob/main/Nietflix.png)
+! [Logo] (./Nietflix.png)
+
+
+> Waring : il s’agit d’un projet WIP.
+> certaines choses ne sont pas stables
 
 
 ## Exigence
