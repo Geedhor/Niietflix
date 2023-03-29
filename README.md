@@ -3,8 +3,6 @@
 ! [Logo] (./Nietflix.png)
 
 
-> Waring : il s’agit d’un projet WIP.
-> certaines choses ne sont pas stables
 ## Exigence
 1. un PC
 2. git
