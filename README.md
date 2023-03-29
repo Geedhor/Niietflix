@@ -1,6 +1,6 @@
 # Nietflix
 
-! [Logo] (https://github.com/github/Niietflix/Nietflix.png)
+! [Logo] (https://github.com/Geedhor/Niietflix/blob/main/Nietflix.png)
 
 
 ## Exigence
