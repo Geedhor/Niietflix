@@ -16,7 +16,11 @@
 
 ## Comment installer
 
-
+Commentaire
+*API GraphQL : port 5002
+*API banquaire : port 5004
+*API REST : port 5001
+*WebSocket : port 5003
 
 ## Membres
 
