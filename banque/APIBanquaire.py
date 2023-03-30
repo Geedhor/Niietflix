@@ -14,6 +14,15 @@ bank_accounts = [
     {"account_number": 171644, "balance": 10000}  #Cinema3
 ]
 
+# définition de la route pour la page d'accueil
+@app.route('/')
+def home():
+    return '<h3>bonjour:</h3> ' \
+           '<p style="background-color: #EEE">Voici l\'API banquaire.</p>' \
+           '<h3> Informations:</h3>' \
+           '<div style="background-color: #EEE"><p>-\'/comptes\' #Visualiser les comptes existant </p>' \
+           '<p>-\'/transfer?sender_account_number=...&receiver_account_number = ...&amount = ...\' #Faire un virement</p></div>'
+
 # définition de la route pour afficher les comptes bancaires
 @app.route('/comptes', methods=['GET'])
 def get_accounts():
@@ -50,4 +59,4 @@ def transfer_money():
 
 # exécution de l'application Flask
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=5004)

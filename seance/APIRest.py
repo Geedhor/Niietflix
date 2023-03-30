@@ -11,6 +11,20 @@ db = mysql.connector.connect(
     database="seancecinemadb"
 )
 
+
+# définition de la route pour la page d'accueil
+@app.route('/')
+def home():
+    return '<h3>bonjour:</h3> ' \
+           '<p style="background-color: #EEE">Voici l\'API REST des séances de cinéma</p>' \
+           '<h3> Informations:</h3>' \
+           '<div style="background-color: #EEE"><p>-\'/seances\' #Visualiser les séances existante </p>' \
+           '<p>-\'/seances/id\' #Visualiser la séance qui possède cette id</p>' \
+           '<p>-</p>' \
+           '<p>-</p>' \
+           '<p>-</p></div>'
+
+
 # Route pour récupérer toutes les séances
 @app.route('/seances', methods=['GET'])
 def get_all_seances():
@@ -90,4 +104,4 @@ def delete_seance(id):
         return jsonify({'message': 'Séance non supprimer'})
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5002)
+    app.run(debug=True, port=5001)
