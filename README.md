@@ -13,6 +13,7 @@
 3. Java
 4. maven
 5. Python (API)
+6. PHP
 
 ## Comment installer
 
