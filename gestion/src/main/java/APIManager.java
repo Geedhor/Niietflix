@@ -19,9 +19,9 @@ public class APIManager {
         ArrayList<String> res = new ArrayList<>();
         JSONArray lf = gc.getListFilms();
         for(int i = 0; i < lf.length(); i++){
-        JSONObject jso = lf.getJSONObject(i);
+            JSONObject jso = lf.getJSONObject(i);
 
-        res.add(jso.getString("titre") + "-"  +jso.getString("id"));
+            res.add(jso.getString("titre") + "-"  +jso.getString("id"));
 
         }
         return res;
