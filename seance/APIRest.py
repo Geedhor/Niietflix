@@ -1,3 +1,5 @@
+import json
+
 from flask import Flask, jsonify, request
 import mysql.connector
 
@@ -40,8 +42,10 @@ def get_all_seances():
             'film': seance[3],
             'salle': seance[4]
         }
+
         seances.append(seance_dict)
-    return jsonify(seances)
+    return json.dumps(seances, indent=4, sort_keys=True, default=str)
+
 
 # Route pour récupérer une séance par ID
 @app.route('/seances/<int:id>', methods=['GET'])
@@ -57,21 +61,25 @@ def get_seance_by_id(id):
             'film': result[3],
             'salle': result[4]
         }
-        return jsonify(seance_dict)
+
+        return json.dumps(seance_dict, indent=4, sort_keys=True, default=str)
     else:
         return jsonify({'message': 'Séance non trouvée'})
+
 
 # Route pour créer une nouvelle séance
 @app.route('/seances', methods=['POST'])
 def create_seance():
-    date = request.json['date']
-    heure = request.json['heure']
+    dates = request.json['date']
+    heures = request.json['heure']
     film = request.json['film']
     salle = request.json['salle']
     cursor = db.cursor()
-    cursor.execute("INSERT INTO seances (date_seance, heure_seance, film, salle) VALUES (%s, %s, %s, %s)", (date, heure, film, salle))
+    cursor.execute("INSERT INTO seances (date, heure, film_id, nomsalle) VALUES (%s, %s, %s, %s)",
+                   (dates, heures, film, salle))
     db.commit()
     return jsonify({'message': 'Séance créée'})
+
 
 # Route pour mettre à jour une séance existante
 @app.route('/seances/<int:id>', methods=['PUT'])
@@ -80,15 +88,17 @@ def update_seance(id):
     cursor.execute("SELECT * FROM seances WHERE id = %s", (id,))
     result = cursor.fetchone()
     if result:
-        date = request.json['date']
-        heure = request.json['heure']
+        dates = request.json['date']
+        heures = request.json['heure']
         film = request.json['film']
         salle = request.json['salle']
-        cursor.execute("UPDATE seances SET date_seance = %s, heure_seance = %s, film = %s, salle = %s WHERE id = %s", (date, heure, film, salle, id))
+        cursor.execute("UPDATE seances SET date = %s, heure = %s, film_id = %s, nomsalle = %s WHERE id = %s",
+                       (dates, heures, film, salle, id))
         db.commit()
         return jsonify({'message': 'Séance mise à jour'})
     else:
         return jsonify({'message': 'Séance non trouvée'})
+
 
 # Route pour supprimer une séance
 @app.route('/seances/<int:id>', methods=['DELETE'])
@@ -102,6 +112,7 @@ def delete_seance(id):
         return jsonify({'message': 'Séance supprimée'})
     else:
         return jsonify({'message': 'Séance non supprimer'})
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
