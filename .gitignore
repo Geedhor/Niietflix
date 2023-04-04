@@ -26,3 +26,5 @@ hs_err_pid*
 .idea
 *.iml
 .idea/*
+
+gestion/.idea/libraries/Maven__com_graphql_java_graphql_java_20_2.xml
